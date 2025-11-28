@@ -1,6 +1,5 @@
 'use client'
 
-import { motion } from 'motion/react'
 import { useReducedMotion } from '@/hooks/use-reduced-motion'
 import { cn } from '@/lib/utils'
 
@@ -15,20 +14,19 @@ interface Square {
   rotation: string
   opacity: string
   accent?: boolean
-  // Orbital animation config
-  orbit: {
-    radiusX: number
-    radiusY: number
-    duration: number
-    delay: number
-    direction: 1 | -1 // 1 = clockwise, -1 = counter-clockwise
-    rotationAmount: number
+  // Hide on mobile for performance
+  hideOnMobile?: boolean
+  // CSS animation config
+  animation: {
+    name: string
+    duration: string
+    delay: string
   }
 }
 
 /**
- * Floating decorative squares with smooth orbital animations
- * Creates depth and visual interest throughout the page
+ * Floating decorative squares with CSS animations for better performance
+ * Uses GPU-accelerated transforms and reduced squares on mobile
  */
 export function FloatingSquares({
   className,
@@ -38,93 +36,47 @@ export function FloatingSquares({
 
   const squares: Record<'hero' | 'section' | 'minimal', Square[]> = {
     hero: [
-      // Large squares - slow, wide orbits
+      // Large squares - slow orbits (visible on all screens)
       {
         size: 'w-80 h-80',
         position: 'absolute -top-20 -right-20',
         rotation: 'rotate-12',
         opacity: 'opacity-[0.04]',
-        orbit: {
-          radiusX: 40,
-          radiusY: 25,
-          duration: 45,
-          delay: 0,
-          direction: 1,
-          rotationAmount: 8,
-        },
+        animation: { name: 'float-1', duration: '45s', delay: '0s' },
       },
       {
         size: 'w-64 h-64',
         position: 'absolute top-1/3 -left-32',
         rotation: '-rotate-6',
         opacity: 'opacity-[0.03]',
-        orbit: {
-          radiusX: 35,
-          radiusY: 50,
-          duration: 55,
-          delay: 5,
-          direction: -1,
-          rotationAmount: 12,
-        },
+        hideOnMobile: true,
+        animation: { name: 'float-2', duration: '55s', delay: '5s' },
       },
+      // Medium squares - hidden on mobile for perf
       {
         size: 'w-48 h-48',
         position: 'absolute bottom-1/4 right-1/3',
         rotation: 'rotate-3',
         opacity: 'opacity-[0.05]',
-        orbit: {
-          radiusX: 30,
-          radiusY: 20,
-          duration: 40,
-          delay: 10,
-          direction: 1,
-          rotationAmount: 6,
-        },
+        hideOnMobile: true,
+        animation: { name: 'float-3', duration: '40s', delay: '10s' },
       },
-      // Medium squares - medium speed orbits
       {
         size: 'w-32 h-32',
         position: 'absolute top-1/2 right-1/4',
         rotation: '-rotate-12',
         opacity: 'opacity-[0.06]',
-        orbit: {
-          radiusX: 25,
-          radiusY: 35,
-          duration: 35,
-          delay: 3,
-          direction: -1,
-          rotationAmount: 15,
-        },
+        hideOnMobile: true,
+        animation: { name: 'float-1', duration: '35s', delay: '3s' },
       },
-      {
-        size: 'w-24 h-24',
-        position: 'absolute bottom-1/3 left-1/4',
-        rotation: 'rotate-6',
-        opacity: 'opacity-[0.04]',
-        orbit: {
-          radiusX: 20,
-          radiusY: 30,
-          duration: 30,
-          delay: 8,
-          direction: 1,
-          rotationAmount: 10,
-        },
-      },
-      // Small squares - faster, tighter orbits with accent
+      // Small accent squares
       {
         size: 'w-16 h-16',
         position: 'absolute top-1/4 right-1/2',
         rotation: 'rotate-45',
         opacity: 'opacity-[0.08]',
         accent: true,
-        orbit: {
-          radiusX: 15,
-          radiusY: 25,
-          duration: 25,
-          delay: 2,
-          direction: -1,
-          rotationAmount: 20,
-        },
+        animation: { name: 'float-2', duration: '25s', delay: '2s' },
       },
       {
         size: 'w-12 h-12',
@@ -132,14 +84,8 @@ export function FloatingSquares({
         rotation: '-rotate-12',
         opacity: 'opacity-[0.06]',
         accent: true,
-        orbit: {
-          radiusX: 18,
-          radiusY: 12,
-          duration: 22,
-          delay: 6,
-          direction: 1,
-          rotationAmount: 25,
-        },
+        hideOnMobile: true,
+        animation: { name: 'float-3', duration: '22s', delay: '6s' },
       },
     ],
     section: [
@@ -148,28 +94,15 @@ export function FloatingSquares({
         position: 'absolute -top-12 -right-12',
         rotation: 'rotate-6',
         opacity: 'opacity-[0.03]',
-        orbit: {
-          radiusX: 25,
-          radiusY: 15,
-          duration: 40,
-          delay: 0,
-          direction: 1,
-          rotationAmount: 8,
-        },
+        animation: { name: 'float-1', duration: '40s', delay: '0s' },
       },
       {
         size: 'w-32 h-32',
         position: 'absolute bottom-0 -left-8',
         rotation: '-rotate-12',
         opacity: 'opacity-[0.04]',
-        orbit: {
-          radiusX: 20,
-          radiusY: 30,
-          duration: 50,
-          delay: 5,
-          direction: -1,
-          rotationAmount: 10,
-        },
+        hideOnMobile: true,
+        animation: { name: 'float-2', duration: '50s', delay: '5s' },
       },
       {
         size: 'w-20 h-20',
@@ -177,14 +110,8 @@ export function FloatingSquares({
         rotation: 'rotate-12',
         opacity: 'opacity-[0.05]',
         accent: true,
-        orbit: {
-          radiusX: 15,
-          radiusY: 20,
-          duration: 30,
-          delay: 2,
-          direction: 1,
-          rotationAmount: 15,
-        },
+        hideOnMobile: true,
+        animation: { name: 'float-3', duration: '30s', delay: '2s' },
       },
     ],
     minimal: [
@@ -193,28 +120,15 @@ export function FloatingSquares({
         position: 'absolute -top-6 -right-6',
         rotation: 'rotate-12',
         opacity: 'opacity-[0.04]',
-        orbit: {
-          radiusX: 15,
-          radiusY: 10,
-          duration: 35,
-          delay: 0,
-          direction: 1,
-          rotationAmount: 6,
-        },
+        animation: { name: 'float-1', duration: '35s', delay: '0s' },
       },
       {
         size: 'w-16 h-16',
         position: 'absolute bottom-0 -left-4',
         rotation: '-rotate-6',
         opacity: 'opacity-[0.03]',
-        orbit: {
-          radiusX: 12,
-          radiusY: 18,
-          duration: 45,
-          delay: 3,
-          direction: -1,
-          rotationAmount: 8,
-        },
+        hideOnMobile: true,
+        animation: { name: 'float-2', duration: '45s', delay: '3s' },
       },
     ],
   }
@@ -230,7 +144,7 @@ export function FloatingSquares({
       aria-hidden="true"
     >
       {selectedSquares.map((square, index) => (
-        <motion.div
+        <div
           key={`${square.position}-${index}`}
           className={cn(
             square.size,
@@ -238,38 +152,20 @@ export function FloatingSquares({
             square.rotation,
             square.opacity,
             'rounded-2xl',
+            'will-change-transform',
             square.accent
               ? 'bg-accent border border-accent/20'
               : 'bg-foreground/5 border border-foreground/5',
+            // Hide on mobile if specified
+            square.hideOnMobile && 'hidden md:block',
           )}
-          animate={
+          style={
             prefersReducedMotion
               ? {}
               : {
-                  x: [
-                    0,
-                    square.orbit.radiusX * square.orbit.direction,
-                    0,
-                    -square.orbit.radiusX * square.orbit.direction,
-                    0,
-                  ],
-                  y: [0, -square.orbit.radiusY, 0, square.orbit.radiusY, 0],
-                  rotate: [
-                    0,
-                    square.orbit.rotationAmount * square.orbit.direction,
-                    0,
-                    -square.orbit.rotationAmount * square.orbit.direction,
-                    0,
-                  ],
-                  scale: [1, 1.02, 1, 0.98, 1],
+                  animation: `${square.animation.name} ${square.animation.duration} ${square.animation.delay} infinite ease-in-out`,
                 }
           }
-          transition={{
-            duration: square.orbit.duration,
-            delay: square.orbit.delay,
-            repeat: Number.POSITIVE_INFINITY,
-            ease: 'linear',
-          }}
         />
       ))}
     </div>

@@ -32,7 +32,7 @@ export const en = {
     name: 'Lars Tadema',
     firstName: 'Lars',
     lastName: 'Tadema',
-    title: 'Senior Software Engineer & Frontend Architect',
+    title: 'Senior Software Engineer & Tech Lead',
     tagline:
       'Building scalable, enterprise-grade applications with TypeScript, React, and Node.js',
     about: `I architect frontend systems that scale from startup to enterprise.
