@@ -21,6 +21,7 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
   if (!mounted) {
     return (
       <button
+        type="button"
         className={cn(
           'p-2 rounded-lg',
           'bg-card/50 hover:bg-card',
@@ -39,6 +40,7 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
 
   return (
     <button
+      type="button"
       onClick={() => setTheme(isDark ? 'light' : 'dark')}
       className={cn(
         'p-2 rounded-lg',

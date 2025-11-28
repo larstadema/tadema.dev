@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
 import { cn } from '@/lib/utils'
@@ -7,6 +8,12 @@ import { cn } from '@/lib/utils'
 interface ThemeLogoProps {
   className?: string
   size?: 'sm' | 'md' | 'lg'
+}
+
+const sizeConfig = {
+  sm: { height: 32, width: 80 },
+  md: { height: 40, width: 100 },
+  lg: { height: 48, width: 120 },
 }
 
 /**
@@ -20,15 +27,16 @@ export function ThemeLogo({ className, size = 'md' }: ThemeLogoProps) {
     setMounted(true)
   }, [])
 
-  const sizeClasses = {
-    sm: 'h-8',
-    md: 'h-10',
-    lg: 'h-12',
-  }
+  const { height, width } = sizeConfig[size]
 
   // Prevent hydration mismatch
   if (!mounted) {
-    return <div className={cn(sizeClasses[size], 'w-auto', className)} />
+    return (
+      <div
+        className={cn('inline-block', className)}
+        style={{ height, width }}
+      />
+    )
   }
 
   const isLight = theme === 'light'
@@ -37,10 +45,13 @@ export function ThemeLogo({ className, size = 'md' }: ThemeLogoProps) {
     : '/logo/tadema-full-logo-dark-400x160.svg'
 
   return (
-    <img
+    <Image
       src={logoSrc}
       alt="Tadema"
-      className={cn(sizeClasses[size], 'w-auto', className)}
+      width={width}
+      height={height}
+      className={cn(className)}
+      priority
     />
   )
 }
