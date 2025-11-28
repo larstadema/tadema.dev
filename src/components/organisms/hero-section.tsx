@@ -208,12 +208,16 @@ export function HeroSection({ className }: HeroSectionProps) {
             >
               <div>
                 <p className="text-3xl font-bold text-foreground">10+</p>
-                <p className="text-sm text-muted-foreground">Years Experience</p>
+                <p className="text-sm text-muted-foreground">
+                  Years Experience
+                </p>
               </div>
               <div className="w-px h-12 bg-border" />
               <div>
                 <p className="text-3xl font-bold text-foreground">50+</p>
-                <p className="text-sm text-muted-foreground">Projects Delivered</p>
+                <p className="text-sm text-muted-foreground">
+                  Projects Delivered
+                </p>
               </div>
               <div className="w-px h-12 bg-border hidden sm:block" />
               <div className="hidden sm:block">
@@ -230,35 +234,35 @@ export function HeroSection({ className }: HeroSectionProps) {
             animate="visible"
             className="relative flex justify-center lg:justify-end"
           >
-              {/* Subtle decorative ring */}
+            {/* Subtle decorative ring */}
+            <div
+              className={cn(
+                'absolute inset-0 flex items-center justify-center',
+              )}
+            >
               <div
                 className={cn(
-                  'absolute inset-0 flex items-center justify-center',
+                  'w-[320px] h-80 sm:w-[380px] sm:h-[380px] lg:w-[420px] lg:h-[420px]',
+                  'rounded-full',
+                  'border border-border',
                 )}
-              >
-                <div
-                  className={cn(
-                    'w-[320px] h-[320px] sm:w-[380px] sm:h-[380px] lg:w-[420px] lg:h-[420px]',
-                    'rounded-full',
-                    'border border-border',
-                  )}
-                />
-              </div>
+              />
+            </div>
 
-              {/* Subtle glow behind image */}
+            {/* Subtle glow behind image */}
+            <div
+              className={cn(
+                'absolute inset-0 flex items-center justify-center',
+              )}
+            >
               <div
                 className={cn(
-                  'absolute inset-0 flex items-center justify-center',
+                  'w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80',
+                  'bg-linear-to-br from-accent/15 via-accent/5 to-transparent',
+                  'rounded-full blur-3xl',
                 )}
-              >
-                <div
-                  className={cn(
-                    'w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80',
-                    'bg-gradient-to-br from-accent/15 via-accent/5 to-transparent',
-                    'rounded-full blur-3xl',
-                  )}
-                />
-              </div>
+              />
+            </div>
 
             <ProfileImage
               src="/images/lars_1200x1200.webp"
@@ -283,14 +287,14 @@ export function HeroSection({ className }: HeroSectionProps) {
         <span className="text-xs text-muted-foreground uppercase tracking-widest">
           Scroll
         </span>
-        <div className="w-px h-8 bg-gradient-to-b from-accent/50 to-transparent" />
+        <div className="w-px h-8 bg-linear-to-b from-accent/50 to-transparent" />
       </motion.div>
 
       {/* Bottom fade */}
       <div
         className={cn(
           'absolute bottom-0 left-0 right-0 h-48',
-          'bg-gradient-to-t from-background via-background/50 to-transparent',
+          'bg-linear-to-t from-background via-background/50 to-transparent',
           'pointer-events-none',
         )}
       />
