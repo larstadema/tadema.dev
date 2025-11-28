@@ -273,7 +273,7 @@ export function HeroSection({ className }: HeroSectionProps) {
             </div>
 
             <ProfileImage
-              src="/images/lars_1200x1200.webp"
+              src="/images/lars_new_1200x1200.webp"
               alt={`${content.profile.name} - ${content.profile.title}`}
               priority
               className="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 z-10"
