@@ -20,6 +20,7 @@
 # Documentation
 /specs
 /docs/local
+CLAUDE.md
 
 # production
 /build
