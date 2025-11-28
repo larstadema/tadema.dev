@@ -99,8 +99,8 @@ export function HeroSection({ className }: HeroSectionProps) {
           {/* Text content */}
           <motion.div
             variants={containerVariants}
-            initial="hidden"
-            animate={prefersReducedMotion ? 'visible' : 'visible'}
+            initial={prefersReducedMotion ? 'visible' : 'hidden'}
+            animate="visible"
             className="space-y-8 lg:space-y-10"
           >
             {/* Logo */}
