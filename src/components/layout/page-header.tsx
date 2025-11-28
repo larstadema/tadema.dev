@@ -1,4 +1,5 @@
 import { ThemeToggle } from '@/components/atoms/theme-toggle'
+import { content } from '@/content'
 import { cn } from '@/lib/utils'
 
 interface PageHeaderProps {
@@ -23,7 +24,7 @@ export const PageHeader = ({ className }: PageHeaderProps) => {
           'focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2',
         )}
       >
-        Skip to main content
+        {content.common.skipToContent}
       </a>
 
       {/* Theme toggle - fixed position */}

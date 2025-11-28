@@ -1,6 +1,6 @@
 import { ContactLink } from '@/components/atoms/contact-link'
 import { Logo } from '@/components/atoms/logo'
-import { CONTACTS } from '@/lib/constants'
+import { content } from '@/content'
 import { cn } from '@/lib/utils'
 
 interface PageFooterProps {
@@ -28,41 +28,53 @@ export const PageFooter = ({ className }: PageFooterProps) => {
           <div className="space-y-4">
             <div className="flex items-center gap-3">
               <Logo size={32} className="text-accent" />
-              <span className="text-foreground font-medium">tadema.dev</span>
+              <span className="text-foreground font-medium">
+                {content.footer.brandName}
+              </span>
             </div>
             <p className="text-sm text-muted-foreground max-w-xs">
-              Frontend architecture and consulting for teams that ship.
+              {content.footer.tagline}
             </p>
           </div>
 
           {/* Business details */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-3 text-sm">
             <div>
-              <span className="text-muted-foreground">KVK:</span>{' '}
-              <span className="text-foreground">98309773</span>
+              <span className="text-muted-foreground">
+                {content.footer.labels.kvk}
+              </span>{' '}
+              <span className="text-foreground">{content.business.kvk}</span>
             </div>
             <div>
-              <span className="text-muted-foreground">VAT-ID:</span>{' '}
-              <span className="text-foreground">NL005323761B53</span>
+              <span className="text-muted-foreground">
+                {content.footer.labels.vatId}
+              </span>{' '}
+              <span className="text-foreground">{content.business.vatId}</span>
             </div>
             <div>
-              <span className="text-muted-foreground">Location:</span>{' '}
-              <span className="text-foreground">Haarlem, Netherlands</span>
+              <span className="text-muted-foreground">
+                {content.footer.labels.location}
+              </span>{' '}
+              <span className="text-foreground">
+                {content.business.location}
+              </span>
             </div>
             <div>
-              <span className="text-muted-foreground">Email:</span>{' '}
+              <span className="text-muted-foreground">
+                {content.footer.labels.email}
+              </span>{' '}
               <a
-                href="mailto:info@tadema.dev"
+                href={`mailto:${content.business.email}`}
                 className="text-foreground hover:text-accent transition-colors"
               >
-                info@tadema.dev
+                {content.business.email}
               </a>
             </div>
           </div>
 
           {/* Social links */}
           <div className="flex items-center gap-3">
-            {CONTACTS.map((contact) => (
+            {content.contacts.map((contact) => (
               <ContactLink
                 key={contact.type}
                 type={contact.type}
@@ -78,7 +90,8 @@ export const PageFooter = ({ className }: PageFooterProps) => {
         {/* Copyright */}
         <div className="mt-8 pt-6 border-t border-border">
           <p className="text-sm text-muted-foreground text-center">
-            &copy; {currentYear} Lars Tadema. All rights reserved.
+            &copy; {currentYear} {content.profile.name}.{' '}
+            {content.common.allRightsReserved}
           </p>
         </div>
       </div>

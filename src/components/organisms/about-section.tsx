@@ -4,7 +4,7 @@ import { Quote } from 'lucide-react'
 import { motion } from 'motion/react'
 import { FloatingSquares } from '@/components/atoms/floating-squares'
 import { SectionContainer } from '@/components/layout/section-container'
-import { PROFILE } from '@/lib/constants'
+import { content } from '@/content'
 import { cn } from '@/lib/utils'
 
 interface AboutSectionProps {
@@ -16,7 +16,7 @@ interface AboutSectionProps {
  */
 export function AboutSection({ className }: AboutSectionProps) {
   // Split about text into paragraphs
-  const paragraphs = PROFILE.about.split('\n\n').filter(Boolean)
+  const paragraphs = content.profile.about.split('\n\n').filter(Boolean)
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -71,7 +71,7 @@ export function AboutSection({ className }: AboutSectionProps) {
               'rounded-full border border-accent/20',
             )}
           >
-            About Me
+            {content.about.sectionLabel}
           </span>
 
           <h2
@@ -81,9 +81,11 @@ export function AboutSection({ className }: AboutSectionProps) {
               'text-foreground mb-8',
             )}
           >
-            From Concept
+            {content.about.heading.line1}
             <br />
-            <span className="text-gradient-accent">to Production</span>
+            <span className="text-gradient-accent">
+              {content.about.heading.line2}
+            </span>
           </h2>
 
           {/* Accent line */}
@@ -103,7 +105,7 @@ export function AboutSection({ className }: AboutSectionProps) {
               )}
             />
             <blockquote className="text-lg italic text-muted-foreground leading-relaxed">
-              &ldquo;The best code is the code your team can maintain.&rdquo;
+              &ldquo;{content.profile.pullQuote}&rdquo;
             </blockquote>
           </div>
         </motion.div>
@@ -134,12 +136,7 @@ export function AboutSection({ className }: AboutSectionProps) {
               'border-t border-border',
             )}
           >
-            {[
-              { value: '10+', label: 'Years Experience' },
-              { value: '4+', label: 'As Architect' },
-              { value: '50+', label: 'Projects' },
-              { value: '100%', label: 'Remote Ready' },
-            ].map((stat) => (
+            {content.about.stats.map((stat) => (
               <div
                 key={stat.label}
                 className={cn(
@@ -186,19 +183,10 @@ export function AboutSection({ className }: AboutSectionProps) {
 
             <div className="relative z-10">
               <h3 className="text-xl font-semibold text-foreground mb-4">
-                Core Expertise
+                {content.about.expertise.heading}
               </h3>
               <div className="flex flex-wrap gap-3">
-                {[
-                  'TypeScript',
-                  'React',
-                  'Next.js',
-                  'Node.js',
-                  'GraphQL',
-                  'System Design',
-                  'Team Leadership',
-                  'Enterprise Architecture',
-                ].map((skill) => (
+                {content.about.expertise.skills.map((skill) => (
                   <span
                     key={skill}
                     className={cn(

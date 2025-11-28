@@ -5,7 +5,7 @@ import { motion } from 'motion/react'
 import { FloatingSquares } from '@/components/atoms/floating-squares'
 import { SectionContainer } from '@/components/layout/section-container'
 import { Button } from '@/components/ui/button'
-import { CONTACTS } from '@/lib/constants'
+import { content } from '@/content'
 import { cn } from '@/lib/utils'
 
 interface CTASectionProps {
@@ -16,7 +16,7 @@ interface CTASectionProps {
  * Call-to-action section - Clean centered design
  */
 export function CTASection({ className }: CTASectionProps) {
-  const emailContact = CONTACTS.find((c) => c.type === 'email')
+  const emailContact = content.contacts.find((c) => c.type === 'email')
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -97,7 +97,7 @@ export function CTASection({ className }: CTASectionProps) {
             'rounded-full border border-accent/20',
           )}
         >
-          Get in Touch
+          {content.cta.sectionLabel}
         </motion.span>
 
         {/* Heading */}
@@ -109,9 +109,11 @@ export function CTASection({ className }: CTASectionProps) {
             'text-foreground mb-6',
           )}
         >
-          Ready to
+          {content.cta.heading.line1}
           <br />
-          <span className="text-gradient-accent">Ship?</span>
+          <span className="text-gradient-accent">
+            {content.cta.heading.line2}
+          </span>
         </motion.h2>
 
         {/* Description */}
@@ -119,9 +121,7 @@ export function CTASection({ className }: CTASectionProps) {
           variants={itemVariants}
           className="text-lg text-muted-foreground max-w-xl mx-auto mb-10 leading-relaxed"
         >
-          Available for freelance consulting, technical leadership, and frontend
-          architecture projects. Let&apos;s discuss how I can help your team
-          succeed.
+          {content.cta.description}
         </motion.p>
 
         {/* Primary CTA */}
@@ -140,7 +140,7 @@ export function CTASection({ className }: CTASectionProps) {
             >
               <a href={emailContact.href}>
                 <Mail className="mr-3 h-5 w-5" />
-                Start a Conversation
+                {content.actions.startConversation}
                 <ArrowRight className="ml-3 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </a>
             </Button>

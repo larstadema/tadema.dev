@@ -6,8 +6,8 @@ import { FloatingSquares } from '@/components/atoms/floating-squares'
 import { ThemeLogo } from '@/components/atoms/theme-logo'
 import { ProfileImage } from '@/components/molecules/profile-image'
 import { Button } from '@/components/ui/button'
+import { content } from '@/content'
 import { useReducedMotion } from '@/hooks/use-reduced-motion'
-import { CONTACTS, PROFILE } from '@/lib/constants'
 import { cn } from '@/lib/utils'
 
 interface HeroSectionProps {
@@ -21,8 +21,8 @@ interface HeroSectionProps {
 export function HeroSection({ className }: HeroSectionProps) {
   const prefersReducedMotion = useReducedMotion()
 
-  const emailContact = CONTACTS.find((c) => c.type === 'email')
-  const linkedinContact = CONTACTS.find((c) => c.type === 'linkedin')
+  const emailContact = content.contacts.find((c) => c.type === 'email')
+  const linkedinContact = content.contacts.find((c) => c.type === 'linkedin')
 
   // Simple fade-in sequence
   const containerVariants = {
@@ -118,10 +118,10 @@ export function HeroSection({ className }: HeroSectionProps) {
                   'text-foreground',
                 )}
               >
-                {PROFILE.name.split(' ')[0]}
+                {content.profile.firstName}
                 <br />
                 <span className="text-gradient-accent">
-                  {PROFILE.name.split(' ')[1]}
+                  {content.profile.lastName}
                 </span>
               </h1>
             </motion.div>
@@ -135,7 +135,7 @@ export function HeroSection({ className }: HeroSectionProps) {
                   'border-l-2 border-accent/50 pl-4',
                 )}
               >
-                {PROFILE.title}
+                {content.profile.title}
               </p>
             </motion.div>
 
@@ -148,7 +148,7 @@ export function HeroSection({ className }: HeroSectionProps) {
                 'max-w-lg',
               )}
             >
-              {PROFILE.tagline}
+              {content.profile.tagline}
             </motion.p>
 
             {/* CTA buttons */}
@@ -169,7 +169,7 @@ export function HeroSection({ className }: HeroSectionProps) {
                   )}
                 >
                   <a href={emailContact.href}>
-                    Get in Touch
+                    {content.actions.getInTouch}
                     <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                   </a>
                 </Button>
@@ -192,7 +192,7 @@ export function HeroSection({ className }: HeroSectionProps) {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    LinkedIn
+                    {content.actions.linkedin}
                   </a>
                 </Button>
               )}
@@ -207,22 +207,30 @@ export function HeroSection({ className }: HeroSectionProps) {
               )}
             >
               <div>
-                <p className="text-3xl font-bold text-foreground">10+</p>
+                <p className="text-3xl font-bold text-foreground">
+                  {content.hero.stats[0].value}
+                </p>
                 <p className="text-sm text-muted-foreground">
-                  Years Experience
+                  {content.hero.stats[0].label}
                 </p>
               </div>
               <div className="w-px h-12 bg-border" />
               <div>
-                <p className="text-3xl font-bold text-foreground">50+</p>
+                <p className="text-3xl font-bold text-foreground">
+                  {content.hero.stats[1].value}
+                </p>
                 <p className="text-sm text-muted-foreground">
-                  Projects Delivered
+                  {content.hero.stats[1].label}
                 </p>
               </div>
               <div className="w-px h-12 bg-border hidden sm:block" />
               <div className="hidden sm:block">
-                <p className="text-3xl font-bold text-accent">Enterprise</p>
-                <p className="text-sm text-muted-foreground">Scale Solutions</p>
+                <p className="text-3xl font-bold text-accent">
+                  {content.hero.stats[2].value}
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  {content.hero.stats[2].label}
+                </p>
               </div>
             </motion.div>
           </motion.div>
@@ -266,7 +274,7 @@ export function HeroSection({ className }: HeroSectionProps) {
 
             <ProfileImage
               src="/images/lars_1200x1200.webp"
-              alt={`${PROFILE.name} - ${PROFILE.title}`}
+              alt={`${content.profile.name} - ${content.profile.title}`}
               priority
               className="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 z-10"
             />
@@ -285,7 +293,7 @@ export function HeroSection({ className }: HeroSectionProps) {
         transition={{ delay: 1, duration: 0.5 }}
       >
         <span className="text-xs text-muted-foreground uppercase tracking-widest">
-          Scroll
+          {content.common.scroll}
         </span>
         <div className="w-px h-8 bg-linear-to-b from-accent/50 to-transparent" />
       </motion.div>

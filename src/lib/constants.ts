@@ -1,55 +1,35 @@
+/**
+ * Constants - Re-exports from centralized content
+ *
+ * This file maintains backwards compatibility while content
+ * lives in src/content/. Prefer importing from @/content directly.
+ */
+
+import type { ContactType, SkillCategory } from '@/content'
+import { content } from '@/content'
+
+// Re-export profile info
 export const PROFILE = {
-  name: 'Lars Tadema',
-  title: 'Senior Software Engineer & Team Lead',
-  tagline:
-    'Building scalable, enterprise-grade applications with TypeScript, React, and Node.js',
-  email: 'info@tadema.dev',
-  about: `I architect frontend systems that scale from startup to enterprise.
-
-With over 10 years of full-stack software development experience, I specialize in TypeScript, React, GraphQL and Node.js, helping organizations create robust frontend solutions and streamline their development workflows.
-
-As a Frontend Architect for the past 4 years, I've established technical guidelines and standards for enterprise applications, ensuring scalability, maintainability, and team efficiency.`,
-  aboutShort:
-    'Senior Software Engineer & Tech Lead with 10+ years of full-stack experience, specializing in TypeScript, React, GraphQL, and Node.js. Focused on building scalable enterprise applications and mentoring high-performance teams.',
+  name: content.profile.name,
+  title: content.profile.title,
+  tagline: content.profile.tagline,
+  email: content.business.email,
+  about: content.profile.about,
+  aboutShort: content.profile.aboutShort,
 } as const
 
+// Re-export skills
 export const SKILLS = {
-  frontend: [
-    'TypeScript',
-    'React',
-    'Next.js',
-    'Redux',
-    'React Native',
-    'GraphQL',
-    'Apollo Client',
-    'Jest',
-    'Playwright',
-    'React Testing Library',
-    'Storybook',
-  ],
-  backend: [
-    'Node.js',
-    'NestJS',
-    'Express.js',
-    'GraphQL',
-    'REST API',
-    'Microservices',
-  ],
-  tools: [
-    'Git',
-    'Docker',
-    'TurboRepo',
-    'Webpack',
-    'Rollup',
-    'SWC',
-    'ESLint',
-    'Azure',
-    'CI/CD',
-    'GitHub Actions',
-  ],
+  frontend: content.skills.categories.frontend.skills,
+  backend: content.skills.categories.backend.skills,
+  tools: content.skills.categories.tools.skills,
 } as const
 
-export type ContactType = 'email' | 'linkedin' | 'github'
+// Re-export contacts
+export const CONTACTS = content.contacts
+
+// Re-export types
+export type { ContactType, SkillCategory }
 
 export interface Contact {
   type: ContactType
@@ -57,26 +37,3 @@ export interface Contact {
   label: string
   newTab?: boolean
 }
-
-export const CONTACTS: Contact[] = [
-  {
-    type: 'email',
-    href: 'mailto:lars@tadema.dev',
-    label: 'Email',
-    newTab: false,
-  },
-  {
-    type: 'linkedin',
-    href: 'https://www.linkedin.com/in/lars-tadema',
-    label: 'LinkedIn',
-    newTab: true,
-  },
-  {
-    type: 'github',
-    href: 'https://github.com/larstadema',
-    label: 'GitHub',
-    newTab: true,
-  },
-] as const
-
-export type SkillCategory = keyof typeof SKILLS

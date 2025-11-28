@@ -4,47 +4,24 @@ import { Code2, Database, Wrench } from 'lucide-react'
 import { motion } from 'motion/react'
 import { FloatingSquares } from '@/components/atoms/floating-squares'
 import { SectionContainer } from '@/components/layout/section-container'
-import { SKILLS, type SkillCategory } from '@/lib/constants'
+import { content, type SkillCategory } from '@/content'
 import { cn } from '@/lib/utils'
 
 interface SkillsSectionProps {
   className?: string
 }
 
-const categoryConfig: Record<
-  SkillCategory,
-  {
-    label: string
-    description: string
-    icon: typeof Code2
-    gradient: string
-  }
-> = {
-  frontend: {
-    label: 'Frontend',
-    description: 'Building performant, accessible user interfaces',
-    icon: Code2,
-    gradient: 'from-blue-500/20 to-cyan-500/20',
-  },
-  backend: {
-    label: 'Backend',
-    description: 'Creating scalable APIs and services',
-    icon: Database,
-    gradient: 'from-violet-500/20 to-purple-500/20',
-  },
-  tools: {
-    label: 'Tools & DevOps',
-    description: 'Streamlining development workflows',
-    icon: Wrench,
-    gradient: 'from-orange-500/20 to-amber-500/20',
-  },
+const categoryIcons: Record<SkillCategory, typeof Code2> = {
+  frontend: Code2,
+  backend: Database,
+  tools: Wrench,
 }
 
 /**
  * Skills section - Clean cards with subtle reveals
  */
 export function SkillsSection({ className }: SkillsSectionProps) {
-  const categories = Object.keys(SKILLS) as SkillCategory[]
+  const categories = Object.keys(content.skills.categories) as SkillCategory[]
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -98,7 +75,7 @@ export function SkillsSection({ className }: SkillsSectionProps) {
             'rounded-full border border-accent/20',
           )}
         >
-          Technical Expertise
+          {content.skills.sectionLabel}
         </motion.span>
 
         <h2
@@ -108,12 +85,11 @@ export function SkillsSection({ className }: SkillsSectionProps) {
             'text-foreground mb-6',
           )}
         >
-          Skills & Technologies
+          {content.skills.heading}
         </h2>
 
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-          10+ years of experience across the full stack, with deep expertise in
-          frontend architecture and TypeScript ecosystems.
+          {content.skills.description}
         </p>
       </motion.div>
 
@@ -126,8 +102,8 @@ export function SkillsSection({ className }: SkillsSectionProps) {
         className="grid md:grid-cols-3 gap-6 lg:gap-8"
       >
         {categories.map((category) => {
-          const config = categoryConfig[category]
-          const Icon = config.icon
+          const categoryContent = content.skills.categories[category]
+          const Icon = categoryIcons[category]
 
           return (
             <motion.div
@@ -168,15 +144,15 @@ export function SkillsSection({ className }: SkillsSectionProps) {
 
                 {/* Header */}
                 <h3 className="text-2xl font-bold text-foreground mb-2">
-                  {config.label}
+                  {categoryContent.label}
                 </h3>
                 <p className="text-sm text-muted-foreground mb-6">
-                  {config.description}
+                  {categoryContent.description}
                 </p>
 
                 {/* Skills list */}
                 <div className="flex flex-wrap gap-2">
-                  {SKILLS[category].map((skill) => (
+                  {categoryContent.skills.map((skill) => (
                     <span
                       key={skill}
                       className={cn(
