@@ -105,13 +105,13 @@ export function CTASection({ className }: CTASectionProps) {
           variants={itemVariants}
           className={cn(
             'text-4xl md:text-5xl lg:text-6xl font-bold',
-            'tracking-tight leading-[1.1]',
+            'tracking-tight leading-tight',
             'text-foreground mb-6',
           )}
         >
-          Let&apos;s Build
+          Ready to
           <br />
-          <span className="text-gradient-accent">Something Great</span>
+          <span className="text-gradient-accent">Ship?</span>
         </motion.h2>
 
         {/* Description */}
@@ -152,7 +152,7 @@ export function CTASection({ className }: CTASectionProps) {
           variants={itemVariants}
           className={cn(
             'absolute -left-20 top-1/2 -translate-y-1/2',
-            'w-16 h-px bg-gradient-to-r from-transparent to-accent/30',
+            'w-16 h-px bg-linear-to-r from-transparent to-accent/30',
             'hidden lg:block',
           )}
         />
@@ -160,7 +160,7 @@ export function CTASection({ className }: CTASectionProps) {
           variants={itemVariants}
           className={cn(
             'absolute -right-20 top-1/2 -translate-y-1/2',
-            'w-16 h-px bg-gradient-to-l from-transparent to-accent/30',
+            'w-16 h-px bg-linear-to-l from-transparent to-accent/30',
             'hidden lg:block',
           )}
         />

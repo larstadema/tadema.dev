@@ -77,20 +77,20 @@ export function AboutSection({ className }: AboutSectionProps) {
           <h2
             className={cn(
               'text-4xl md:text-5xl font-bold',
-              'tracking-tight leading-[1.1]',
+              'tracking-tight leading-tight',
               'text-foreground mb-8',
             )}
           >
-            Building the
+            From Concept
             <br />
-            <span className="text-gradient-accent">Future of Web</span>
+            <span className="text-gradient-accent">to Production</span>
           </h2>
 
           {/* Accent line */}
           <div
             className={cn(
               'w-24 h-1 rounded-full mb-8',
-              'bg-gradient-to-r from-accent via-accent/50 to-transparent',
+              'bg-linear-to-r from-accent via-accent/50 to-transparent',
             )}
           />
 
@@ -103,8 +103,7 @@ export function AboutSection({ className }: AboutSectionProps) {
               )}
             />
             <blockquote className="text-lg italic text-muted-foreground leading-relaxed">
-              &ldquo;Creating robust frontend solutions that solve complex
-              business challenges.&rdquo;
+              &ldquo;The best code is the code your team can maintain.&rdquo;
             </blockquote>
           </div>
         </motion.div>
@@ -166,7 +165,7 @@ export function AboutSection({ className }: AboutSectionProps) {
             variants={itemVariants}
             className={cn(
               'relative p-8 rounded-3xl mt-8',
-              'bg-gradient-to-br from-accent/10 via-card/50 to-card/30',
+              'bg-linear-to-br from-accent/10 via-card/50 to-card/30',
               'border border-accent/20',
               'overflow-hidden',
             )}

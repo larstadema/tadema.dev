@@ -1,12 +1,12 @@
 export const PROFILE = {
   name: 'Lars Tadema',
-  title: 'Senior Software Engineer & Frontend Architect',
+  title: 'Senior Software Engineer & Team Lead',
   tagline:
     'Building scalable, enterprise-grade applications with TypeScript, React, and Node.js',
   email: 'info@tadema.dev',
-  about: `Passionate about building scalable, enterprise-grade applications that solve complex business challenges.
+  about: `I architect frontend systems that scale from startup to enterprise.
 
-With over 10 years of full-stack software development experience, I specialize in TypeScript, React, GraphQL and Node.js, helping organizations creating robust frontend solutions and streamline their development workflows.
+With over 10 years of full-stack software development experience, I specialize in TypeScript, React, GraphQL and Node.js, helping organizations create robust frontend solutions and streamline their development workflows.
 
 As a Frontend Architect for the past 4 years, I've established technical guidelines and standards for enterprise applications, ensuring scalability, maintainability, and team efficiency.`,
   aboutShort:

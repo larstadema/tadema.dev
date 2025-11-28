@@ -31,7 +31,7 @@ export const PageFooter = ({ className }: PageFooterProps) => {
               <span className="text-foreground font-medium">tadema.dev</span>
             </div>
             <p className="text-sm text-muted-foreground max-w-xs">
-              Creating software, mobile apps, and websites that make an impact.
+              Frontend architecture and consulting for teams that ship.
             </p>
           </div>
 
@@ -42,7 +42,7 @@ export const PageFooter = ({ className }: PageFooterProps) => {
               <span className="text-foreground">98309773</span>
             </div>
             <div>
-              <span className="text-muted-foreground">BTW-ID:</span>{' '}
+              <span className="text-muted-foreground">VAT-ID:</span>{' '}
               <span className="text-foreground">NL005323761B53</span>
             </div>
             <div>
