@@ -36,5 +36,4 @@ export function getContent(locale: Locale = 'en'): Content {
 export const content = locales[currentLocale]
 
 // Re-export types
-export type { Content, ContactType, SkillCategory }
-export type { Locale }
+export type { ContactType, Content, Locale, SkillCategory }

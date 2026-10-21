@@ -143,9 +143,9 @@ export function FloatingSquares({
       )}
       aria-hidden="true"
     >
-      {selectedSquares.map((square, index) => (
+      {selectedSquares.map((square) => (
         <div
-          key={`${square.position}-${index}`}
+          key={square.position}
           className={cn(
             square.size,
             square.position,
