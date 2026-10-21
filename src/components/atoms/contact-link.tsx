@@ -1,7 +1,8 @@
 'use client'
 
-import { Github, Linkedin, type LucideIcon, Mail } from 'lucide-react'
+import { type LucideIcon, Mail } from 'lucide-react'
 import { motion } from 'motion/react'
+import { Github, Linkedin } from '@/components/atoms/brand-icons'
 import { useReducedMotion } from '@/hooks/use-reduced-motion'
 import type { ContactType } from '@/lib/constants'
 import { cn } from '@/lib/utils'
